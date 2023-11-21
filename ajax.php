@@ -14,14 +14,14 @@ if ($action == 'adduser' && !empty($_POST)) {
     $playerId = (!empty($_POST['userid'])) ? $_POST['userid'] : '';
 
     // file (photo) upload
-    $imagename = '';
+    $imageName = '';
     if (!empty($photo['name'])) {
-        $imagename = $obj->uploadPhoto($photo);
+        $imageName = $obj->uploadPhoto($photo);
         $playerData = [
             'pname' => $pname,
             'email' => $email,
             'phone' => $phone,
-            'photo' => $imagename,
+            'photo' => $imageName,
         ];
     } else {
         $playerData = [

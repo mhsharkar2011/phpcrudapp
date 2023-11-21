@@ -47,8 +47,8 @@
             <label for="message-text" class="col-form-label">Photo:</label>
             <div class="input-group mb-3">
               <div class="input-group-prepend">
-                <span class="input-group-text" id="inputGroupFileAddon01"><i class="fa fa-picture-o"
-                    aria-hidden="true"></i></span>
+                <span class="input-group-text" id="inputGroupFileAddon01">
+                  <i class="fa fa-picture-o" aria-hidden="true"></i></span>
               </div>
               <div class="custom-file">
                 <input type="file" class="custom-file-input" name="photo" id="userphoto">
