@@ -1,11 +1,9 @@
 <?php
 require_once 'Database.php';
-
 class Player extends Database
 {
     // table name
-    protected $tableName = 'players';
-
+    protected $table = 'players';
     /**
      * function is used to add record
      * @param array $data
@@ -13,16 +11,14 @@ class Player extends Database
      */
     public function add($data)
     {
-
         if (!empty($data)) {
-            $fileds = $placholders = [];
+            $fields = $placeholders = [];
             foreach ($data as $field => $value) {
-                $fileds[] = $field;
-                $placholders[] = ":{$field}";
+                $fields[] = $field;
+                $placeholders[] = ":{$field}";
             }
         }
-
-        $sql = "INSERT INTO {$this->tableName} (" . implode(',', $fileds) . ") VALUES (" . implode(',', $placholders) . ")";
+        $sql = "INSERT INTO {$this->table} (" . implode(',', $fields) . ") VALUES (" . implode(',', $placeholders) . ")";
         $stmt = $this->conn->prepare($sql);
         try {
             $this->conn->beginTransaction();
@@ -34,24 +30,23 @@ class Player extends Database
             echo "Error: " . $e->getMessage();
             $this->conn->rollback();
         }
-
     }
 
     public function update($data, $id)
     {
         if (!empty($data)) {
-            $fileds = '';
+            $fields = '';
             $x = 1;
-            $filedsCount = count($data);
+            $fieldsCount = count($data);
             foreach ($data as $field => $value) {
-                $fileds .= "{$field}=:{$field}";
-                if ($x < $filedsCount) {
-                    $fileds .= ", ";
+                $fields .= "{$field}=:{$field}";
+                if ($x < $fieldsCount) {
+                    $fields .= ", ";
                 }
                 $x++;
             }
         }
-        $sql = "UPDATE {$this->tableName} SET {$fileds} WHERE id=:id";
+        $sql = "UPDATE {$this->table} SET {$fields} WHERE id=:id";
         $stmt = $this->conn->prepare($sql);
         try {
             $this->conn->beginTransaction();
@@ -62,7 +57,6 @@ class Player extends Database
             echo "Error: " . $e->getMessage();
             $this->conn->rollback();
         }
-
     }
 
     /**
@@ -74,7 +68,7 @@ class Player extends Database
 
     public function getRows($start = 0, $limit = 4)
     {
-        $sql = "SELECT * FROM {$this->tableName} ORDER BY id DESC LIMIT {$start},{$limit}";
+        $sql = "SELECT * FROM {$this->table} ORDER BY id DESC LIMIT {$start},{$limit}";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute();
         if ($stmt->rowCount() > 0) {
@@ -85,11 +79,10 @@ class Player extends Database
         }
         return $results;
     }
-
     // delete row using id
     public function deleteRow($id)
     {
-        $sql = "DELETE FROM {$this->tableName}  WHERE id=:id";
+        $sql = "DELETE FROM {$this->table}  WHERE id=:id";
         $stmt = $this->conn->prepare($sql);
         try {
             $stmt->execute([':id' => $id]);
@@ -100,12 +93,10 @@ class Player extends Database
             echo "Error: " . $e->getMessage();
             return false;
         }
-
     }
-
     public function getCount()
     {
-        $sql = "SELECT count(*) as pcount FROM {$this->tableName}";
+        $sql = "SELECT count(*) as pcount FROM {$this->table}";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute();
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -113,14 +104,14 @@ class Player extends Database
     }
     /**
      * function is used to get single record based on the column value
-     * @param string $fileds
+     * @param string $fields
      * @param any $value
      * @return array $results
      */
     public function getRow($field, $value)
     {
 
-        $sql = "SELECT * FROM {$this->tableName}  WHERE {$field}=:{$field}";
+        $sql = "SELECT * FROM {$this->table}  WHERE {$field}=:{$field}";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute([":{$field}" => $value]);
         if ($stmt->rowCount() > 0) {
@@ -131,10 +122,9 @@ class Player extends Database
 
         return $result;
     }
-
     public function searchPlayer($searchText, $start = 0, $limit = 4)
     {
-        $sql = "SELECT * FROM {$this->tableName} WHERE pname LIKE :search ORDER BY id DESC LIMIT {$start},{$limit}";
+        $sql = "SELECT * FROM {$this->table} WHERE pname LIKE :search ORDER BY id DESC LIMIT {$start},{$limit}";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute([':search' => "{$searchText}%"]);
         if ($stmt->rowCount() > 0) {
@@ -168,8 +158,6 @@ class Player extends Database
                     return $newFileName;
                 }
             }
-
         }
     }
-
 }

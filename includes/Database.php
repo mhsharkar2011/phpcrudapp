@@ -3,8 +3,8 @@ class Database
 {
     private $dbServer = 'localhost';
     private $dbUser = 'root';
-    private $dbPassword = '';
-    private $dbName = 'playersdb';
+    private $dbPassword = 'root';
+    private $dbName = 'db_player';
     protected $conn;
 
     public function __construct()

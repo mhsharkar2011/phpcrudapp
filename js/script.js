@@ -48,7 +48,7 @@ function getplayerrow(player) {
 function getplayers() {
   var pageno = $("#currentpage").val();
   $.ajax({
-    url: "/phpcrudajax/ajax.php",
+    url: "../ajax.php",
     type: "GET",
     dataType: "json",
     data: { page: pageno, action: "getusers" },
@@ -85,7 +85,7 @@ $(document).ready(function () {
         ? "Player has been updated Successfully!"
         : "New Player has been added Successfully!";
     $.ajax({
-      url: "/phpcrudajax/ajax.php",
+      url: "../ajax.php",
       type: "POST",
       dataType: "json",
       data: new FormData(this),
@@ -130,7 +130,7 @@ $(document).ready(function () {
     var pid = $(this).data("id");
 
     $.ajax({
-      url: "/phpcrudajax/ajax.php",
+      url: "../ajax.php",
       type: "GET",
       dataType: "json",
       data: { id: pid, action: "getuser" },
@@ -158,7 +158,7 @@ $(document).ready(function () {
     var pid = $(this).data("id");
     if (confirm("Are you sure want to delete this?")) {
       $.ajax({
-        url: "/phpcrudajax/ajax.php",
+        url: "../ajax.php",
         type: "GET",
         dataType: "json",
         data: { id: pid, action: "deleteuser" },
@@ -187,7 +187,7 @@ $(document).ready(function () {
   $(document).on("click", "a.profile", function () {
     var pid = $(this).data("id");
     $.ajax({
-      url: "/phpcrudajax/ajax.php",
+      url: "../ajax.php",
       type: "GET",
       dataType: "json",
       data: { id: pid, action: "getuser" },
@@ -221,7 +221,7 @@ $(document).ready(function () {
     const searchText = $(this).val();
     if (searchText.length > 1) {
       $.ajax({
-        url: "/phpcrudajax/ajax.php",
+        url: "../ajax.php",
         type: "GET",
         dataType: "json",
         data: { searchQuery: searchText, action: "search" },
