@@ -51,7 +51,7 @@
                   <i class="fa fa-picture-o" aria-hidden="true"></i></span>
               </div>
               <div class="custom-file">
-                <input type="file" class="custom-file-input" name="photo" id="userphoto">
+                <input type="file" class="custom-file-input" name="photo" id="photo">
                 <label class="custom-file-label" for="userphoto">Choose file</label>
               </div>
             </div>

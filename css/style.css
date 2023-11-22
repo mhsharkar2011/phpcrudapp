@@ -5,11 +5,31 @@
   width: 100px;
 }
 .img-thumbnail {
-  width: 80px !important;
+  width: 50px !important;
+  float: none !important;
 }
-.message {
-  display: none;
+.table{
+  border: 1px solid #cce5ff;
 }
+.table td {
+  padding: .3rem;
+}
+.table th {
+  background-color: #eafdef;
+  border: 1px solid rgb(193, 209, 226);
+  padding: 10px;
+  color: #17a2b8;
+}
+
+.page-item.active .page-link {
+  color: #17a2b8;
+  background-color: #cce5ff;
+  border-color: #cce5ff;
+}
+.page-link {
+  color: #17a2b8;
+}
+
 #overlay {
   background: #ffffff;
   color: #666666;
@@ -23,4 +43,38 @@
   text-align: center;
   padding-top: 25%;
   opacity: 0.8;
+}
+
+.message{
+  background: #cce5ff;
+  color: rgb(0, 184, 0);
+  padding: 10px;
+  margin: 10px;
+  display: none;
+  position: absolute;
+  right: 120px;
+  top: 0px;
+  z-index: 2000;
+}
+.error-message{
+  background: #EFDCDD;
+  color: red;
+  padding: 10px;
+  margin: 10px;
+  display: none;
+  position:absolute;
+  right: 218px;
+  top: 0px;
+}
+
+.delete-message{
+  background: #cce5ff;
+  color: rgb(238, 56, 0);
+  padding: 10px;
+  margin: 10px;
+  display: none;
+  position: absolute;
+  right: 120px;
+  top: 0px;
+  z-index: 2000;
 }

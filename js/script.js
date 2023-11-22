@@ -26,19 +26,16 @@ function pagination(totalpages, currentpage) {
 function getplayerrow(player) {
   var playerRow = "";
   if (player) {
-    const userphoto = player.photo ? player.photo : "default.png";
+    const userphoto = player.photo ? player.photo : "avatar.jpg";
     playerRow = `<tr>
-          <td class="align-middle"><img src="uploads/${userphoto}" class="img-thumbnail rounded float-left"></td>
-          <td class="align-middle">${player.pname}</td>
-          <td class="align-middle">${player.email}</td>
-          <td class="align-middle">${player.phone}</td>
-          <td class="align-middle">
-            <a href="#" class="btn btn-success mr-3 profile" data-toggle="modal" data-target="#userViewModal"
-              title="Prfile" data-id="${player.id}"><i class="fa fa-address-card-o" aria-hidden="true"></i></a>
-            <a href="#" class="btn btn-warning mr-3 edituser" data-toggle="modal" data-target="#userModal"
-              title="Edit" data-id="${player.id}"><i class="fa fa-pencil-square-o fa-lg"></i></a>
-            <a href="#" class="btn btn-danger deleteuser" data-userid="14" title="Delete" data-id="${player.id}"><i
-                class="fa fa-trash-o fa-lg"></i></a>
+          <td class="align-middle text-center"><img src="uploads/${userphoto}" class="img-thumbnail rounded float-left"></td>
+          <td class="align-middle text-center">${player.pname}</td>
+          <td class="align-middle text-center">${player.email}</td>
+          <td class="align-middle text-center">${player.phone}</td>
+          <td class="align-middle text-center">
+            <a href="#" class="text-info mr-2  profile" data-toggle="modal" data-target="#userViewModal" title="Prfile" data-id="${player.id}"><i class="fa fa-address-card-o fa-lg" aria-hidden="true"></i></a>
+            <a href="#" class="text-info mr-2  edituser" data-toggle="modal" data-target="#userModal" title="Edit" data-id="${player.id}"><i class="fa fa-pencil fa-lg"></i></a>
+            <a href="#" class="text-danger deleteuser" data-userid="14" title="Delete" data-id="${player.id}"><i class="fa fa-trash-o fa-lg"></i></a>
           </td>
         </tr>`;
   }
@@ -64,7 +61,7 @@ function getplayers() {
         });
         $("#userstable tbody").html(playerslist);
         let totalPlayers = rows.count;
-        let totalpages = Math.ceil(parseInt(totalPlayers) / 4);
+        let totalpages = Math.ceil(parseInt(totalPlayers) / 5);
         const currentpage = $("#currentpage").val();
         pagination(totalpages, currentpage);
         $("#overlay").fadeOut();
@@ -80,10 +77,7 @@ $(document).ready(function () {
   // add/edit user
   $(document).on("submit", "#addform", function (event) {
     event.preventDefault();
-    var alertmsg =
-      $("#userid").val().length > 0
-        ? "Player has been updated Successfully!"
-        : "New Player has been added Successfully!";
+    var alertmsg = $("#userid").val().length > 0 ? "Player has been updated Successfully!" : "New Player has been added Successfully!";
     $.ajax({
       url: "../ajax.php",
       type: "POST",
@@ -95,11 +89,10 @@ $(document).ready(function () {
         $("#overlay").fadeIn();
       },
       success: function (response) {
-        console.log(response);
         if (response) {
+          $(".message").html(alertmsg).slideDown().delay(3000).slideUp();
           $("#userModal").modal("hide");
           $("#addform")[0].reset();
-          $(".message").html(alertmsg).fadeIn().delay(3000).fadeOut();
           getplayers();
           $("#overlay").fadeOut();
         }
@@ -167,11 +160,7 @@ $(document).ready(function () {
         },
         success: function (res) {
           if (res.deleted == 1) {
-            $(".message")
-              .html("Player has been deleted successfully!")
-              .fadeIn()
-              .delay(3000)
-              .fadeOut();
+            $(".delete-message").html("Player has been deleted successfully!").slideDown().delay(3000).slideUp();
             getplayers();
             $("#overlay").fadeOut();
           }
@@ -193,7 +182,7 @@ $(document).ready(function () {
       data: { id: pid, action: "getuser" },
       success: function (player) {
         if (player) {
-          const userphoto = player.photo ? player.photo : "default.png";
+          const userphoto = player.photo ? player.photo : "avatar.jpg";
           const profile = `<div class="row">
                 <div class="col-sm-6 col-md-4">
                   <img src="uploads/${userphoto}" class="rounded responsive" />

@@ -46,7 +46,7 @@ if ($action == 'adduser' && !empty($_POST)) {
 
 if ($action == "getusers") {
     $page = (!empty($_GET['page'])) ? $_GET['page'] : 1;
-    $limit = 4;
+    $limit = 5;
     $start = ($page - 1) * $limit;
 
     $players = $obj->getRows($start, $limit);

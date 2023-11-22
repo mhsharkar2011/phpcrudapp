@@ -149,7 +149,7 @@ class Player extends Database
             $fileType = $file['type'];
             $fileNameCmps = explode('.', $fileName);
             $fileExtension = strtolower(end($fileNameCmps));
-            $newFileName = (time() . $fileName) . '.' . $fileExtension;
+            $newFileName = md5(time() . $fileName) . '.' . $fileExtension;
             $allowedExtn = ["jpg", "png", "gif", "jpeg"];
             if (in_array($fileExtension, $allowedExtn)) {
                 $uploadFileDir = getcwd() . '/uploads/';

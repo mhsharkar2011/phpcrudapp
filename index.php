@@ -5,26 +5,27 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PHP CRUD Application Using jQuery Ajax</title>
-  <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
+   
+    
   <div class="container">
-    <div class="alert alert alert-primary" role="alert">
-      <h4 class="text-primary text-center">PHP CRUD Application Using jQuery Ajax</h4>
+    <div class="alert alert-primary" role="alert">
+      <h4 class="text-info text-center">PHP CRUD Application Using jQuery Ajax</h4>
     </div>
-    <div class="alert alert-success text-center message" role="alert">
-
-    </div>
+   
     <?php
     include_once 'form.php';
     include_once 'profile.php';
     ?>
+
     <div class="row mb-3">
       <div class="col-3">
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#userModal" id="addnewbtn">Add New <i class="fa fa-user-circle-o"></i></button>
+        <button type="button" class="btn btn-light btn-outline-info" data-toggle="modal" data-target="#userModal" id="addnewbtn">Add New <i class="fa fa-user-circle-o"></i></button>
       </div>
       <div class="col-9">
         <div class="input-group input-group-lg">
@@ -39,7 +40,11 @@
     <?php
     include_once 'playerstable.php';
     ?>
-    <nav id="pagination">
+    <!-- Message -->
+   <div class="message"></div>
+    <div class="error-message"></div>
+    <div class="delete-message"></div>
+    <nav class="text-info" id="pagination">
     </nav>
     <input type="hidden" name="currentpage" id="currentpage" value="1">
   </div>
