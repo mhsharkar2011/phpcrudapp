@@ -7,7 +7,7 @@ if (!empty($action)) {
 }
 
 if ($action == 'adduser' && !empty($_POST)) {
-    $pname = $_POST['username'];
+    $pname = $_POST['name'];
     $email = $_POST['email'];
     $phone = $_POST['phone'];
     $photo = $_FILES['photo'];

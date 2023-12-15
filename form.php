@@ -10,7 +10,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form id="addform" method="POST" enctype="multipart/form-data">
+      <form action="" id="addform" method="POST" enctype="multipart/form-data">
         <div class="modal-body">
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">Name:</label>
@@ -19,7 +19,7 @@
                 <span class="input-group-text" id="basic-addon1"><i class="fa fa-user-circle-o"
                     aria-hidden="true"></i>
               </div>
-              <input type="text" class="form-control" id="username" name="username" required="required">
+              <input type="text" class="form-control" id="username" name="name" required="required">
             </div>
           </div>
           <div class="form-group">
