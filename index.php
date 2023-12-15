@@ -43,11 +43,7 @@
     </nav>
     <input type="hidden" name="currentpage" id="currentpage" value="1">
   </div>
-  <div id="overlay" style="display:none;">
-    <div class="spinner-border text-danger" style="width: 3rem; height: 3rem;"></div>
-    <br />
-    Loading...
-  </div>
+  
   <!-- JS, Popper.js, and jQuery -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
