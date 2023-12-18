@@ -4,7 +4,7 @@ class Database
     private $dbServer = 'localhost';
     private $dbUser = 'root';
     private $dbPassword = 'root';
-    private $dbName = 'db_player';
+    private $dbName = 'php_mysql_crud';
     protected $conn;
 
     public function __construct()
